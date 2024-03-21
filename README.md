@@ -1,3 +1,5 @@
+[<img src="docs/images/logo-quic-on%40h68.png" height="68px" width="393px" alt="Qualcomm Innovation Center" align="right"/>](https://github.com/quic)
+
 # quic-usb-drivers
 
 quic-usb-drivers is a set of 4 driver (GobiSerial, InfParser, QdssDiag and Rmnet) runs on host systems such as Ubuntu, Redhat provides connectivity to Qualcomm device through USB. These drivers are the core drivers utilized for firmware download, crash dump collection, Diag/Qdss Logging, rmnet data connectivity, etc..  These are generic USB Drivers independent of Qualcomm targets used for USB tethered connectivity of any Qualcomm target to x86 Ubuntu/Red hat systems
