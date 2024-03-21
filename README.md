@@ -1,7 +1,4 @@
-// Copyright (c) 2024, Qualcomm Innovation Center, Inc. All rights reserved.
-// SPDX-License-Identifier: BSD-3-Clause
-
-quic-usb-drivers
+# quic-usb-drivers
 
 quic-usb-drivers is a set of 4 driver (GobiSerial, InfParser, QdssDiag and Rmnet) runs on host systems such as Ubuntu, Redhat provides connectivity to Qualcomm device through USB. These drivers are the core drivers utilized for firmware download, crash dump collection, Diag/Qdss Logging, rmnet data connectivity, etc..  These are generic USB Drivers independent of Qualcomm targets used for USB tethered connectivity of any Qualcomm target to x86 Ubuntu/Red hat systems
 
@@ -11,9 +8,11 @@ QdssDiag is a USB-based kernel module leveraging the USB subsystem framework API
  
 RMNET is a USB-based network driver designed to support the WWAN connectivity and data call bringup and throughput testing. It also supports QMI control interface for assessing various services on device.
 
-Installation/Uninstallation:
+## Installation/Uninstallation:
  
 1.	chmod +x QcDevDriver.sh
 2.	Installation - sudo ./QcDevDriver.sh install
 3.	Uninstallation - sudo ./QcDevDriver.sh uninstall
 
+## License
+quic-usb-drivers is licensed on the BSD 3-clause "New" or "Revised" License.  Check out the [LICENSE](LICENSE) for more details.
