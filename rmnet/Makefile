@@ -1,5 +1,5 @@
 # Copyright (c) 2024, Qualcomm Innovation Center, Inc. All rights reserved.
-# SPDX-License-Identifier: BSD-3-Clause
+# SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause
 
 #obj-m := GobiNet.o ../InfParser/qtiDevInf.o
 obj-m := GobiNet.o
