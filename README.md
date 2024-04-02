@@ -13,8 +13,9 @@ RMNET is a USB-based network driver designed to support the WWAN connectivity an
 ## Installation/Uninstallation:
  
 1.	chmod +x QcDevDriver.sh
-2.	Installation - sudo ./QcDevDriver.sh install
-3.	Uninstallation - sudo ./QcDevDriver.sh uninstall
+2.	cd quic-usb-drivers
+3.	Installation - sudo ./QcDevDriver.sh install
+4.	Uninstallation - sudo ./QcDevDriver.sh uninstall
 
 ## License
 quic-usb-drivers is licensed on the BSD 3-clause "New" or "Revised" License.  Check out the [LICENSE](LICENSE) for more details.
