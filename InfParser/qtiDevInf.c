@@ -84,9 +84,6 @@ EXPORT_SYMBOL(QTIDevInfGetDevInfo);
 int QTIDevInfCheckFileStatus(fileInfo_t *pFileInfo, char *pFilePath)
 {
     struct file *filp = NULL;
-    struct timespec64 Atime;
-    struct timespec64 Mtime;
-    struct timespec64 Ctime;
 
     int ret = false;
 
@@ -107,17 +104,6 @@ int QTIDevInfCheckFileStatus(fileInfo_t *pFileInfo, char *pFilePath)
         return -ENXIO;
     }
 
-    Atime = filp->f_inode->i_atime;
-    Mtime = filp->f_inode->i_mtime;
-    Ctime = filp->f_inode->i_ctime;
-
-    if (memcmp(&Atime, &pFileInfo->mAtime, sizeof(struct timespec64)) ||
-        memcmp(&Mtime, &pFileInfo->mMtime, sizeof(struct timespec64)) ||
-        memcmp(&Ctime, &pFileInfo->mCtime, sizeof(struct timespec64)))
-    {
-        DBG("mismatch in the timestamps \n");
-        ret = true;
-    }
     filp_close(filp, NULL);
     return ret;
 }
@@ -559,14 +545,6 @@ static int processData(fileInfo_t *pFileInfo, struct file *filp, bool flag)
                     break;
             }
         }
-    }
-
-    if (flag == true) {
-        pFileInfo->mAtime = filp->f_inode->i_atime;
-        pFileInfo->mMtime = filp->f_inode->i_mtime;
-        pFileInfo->mCtime = filp->f_inode->i_ctime;
-
-        return Filevalid ? 0 : -1;
     }
 
     return count;

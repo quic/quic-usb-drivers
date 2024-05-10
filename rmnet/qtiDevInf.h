@@ -159,9 +159,6 @@ typedef struct _devInfo {
 } devInfo_t;
 
 typedef struct _fileInfo {
-    struct timespec64     mAtime;     /**< File Timestamps        */
-    struct timespec64     mMtime;     /**< File Timestamps        */
-    struct timespec64     mCtime;     /**< File Timestamps        */
     deviceClass         mClass;     /**< INF/Config file class  */
     unsigned int        mLength;    /**< Number of devices can occupy */
     unsigned int        mNumResp;   /**< Number of devices present */
