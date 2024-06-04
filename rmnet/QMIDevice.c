@@ -3277,7 +3277,7 @@ void WriteAsyncCallback( struct urb * pWriteURB )
         kfree(pWriteURB->transfer_buffer);
         usb_free_urb( pWriteURB );
 
-      #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,148))
+      #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,158))
          pAioDataCtx->kiocb->ki_complete(pAioDataCtx->kiocb, 0, -EINVAL);
       #else
          pAioDataCtx->kiocb->ki_complete(pAioDataCtx->kiocb, -EINVAL);
@@ -3304,7 +3304,7 @@ void WriteAsyncCallback( struct urb * pWriteURB )
             AddToURBList( pDev, pFilpData->mClientID, pWriteURB, pFilpData->QMIDev );
         spin_unlock_irqrestore( &pFilpData->QMIDev->mClientMemLock, flags );
 
-      #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,148))
+      #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,158))
          pAioDataCtx->kiocb->ki_complete(pAioDataCtx->kiocb, 0, -EINVAL);
       #else
          pAioDataCtx->kiocb->ki_complete(pAioDataCtx->kiocb, 0);
@@ -3317,7 +3317,7 @@ void WriteAsyncCallback( struct urb * pWriteURB )
     spin_unlock_irqrestore( &pFilpData->QMIDev->mClientMemLock, flags );
 
    QC_LOG_DBG(GET_QMIDEV_QMIFILP(pFilpData), "Actual Write:\n" );
-   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,148))
+   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,158))
       pAioDataCtx->kiocb->ki_complete(pAioDataCtx->kiocb, (pWriteURB->actual_length - QMUXHeaderSize()), pWriteURB->status);
    #else
       pAioDataCtx->kiocb->ki_complete(pAioDataCtx->kiocb, (pWriteURB->actual_length - QMUXHeaderSize()));
@@ -3341,7 +3341,7 @@ static void aio_cancel_worker(struct work_struct *work)
 
     usb_kill_urb(io_data->urb);
 
-   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,148))
+   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,158))
       io_data->kiocb->ki_complete(io_data->kiocb, -1, -ETIMEDOUT);
    #else
       io_data->kiocb->ki_complete(io_data->kiocb, -1);
@@ -3675,7 +3675,7 @@ static void aio_read_copy_worker(struct work_struct *work)
         status = 0;
     }
 
-   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,148))
+   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,158))
       kiocb->ki_complete(kiocb, ret, status); //Status = 0, in case of success
    #else
       kiocb->ki_complete(kiocb, ret); // ret: number of bytes not copied
@@ -3831,7 +3831,7 @@ static void aio_read_cancel_worker(struct work_struct *work)
 
     spin_unlock_irqrestore( &QMIDev->mClientMemLock, flags);
 
-   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,148))
+   #if (LINUX_VERSION_CODE <= KERNEL_VERSION(5,15,158))
       kiocb->ki_complete(kiocb, 0, -ETIMEDOUT);
    #else
       kiocb->ki_complete(kiocb, 0);
