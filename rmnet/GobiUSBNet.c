@@ -67,7 +67,7 @@ int enableDhcp = 0;
 
 #define CONFIG_USB_CODE
 #ifdef CONFIG_USB_CODE
-#define QTI_RMNET_INF_PATH "/opt/QTI/QUD/rmnet/qtiwwan.inf"
+#define QTI_RMNET_INF_PATH "/opt/QUIC/USB/rmnet/qtiwwan.inf"
 #define GOBI_NUM_DEVICES_DEFAULT 8
 
 fileInfo_t  *gQTIRmnetFileInfo = NULL;

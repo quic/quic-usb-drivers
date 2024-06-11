@@ -37,7 +37,7 @@ static ulong debug;
 
 #define CONFIG_USB_CODE
 #ifdef CONFIG_USB_CODE
-#define QTI_MODEM_INF_PATH "/opt/QTI/QUD/serial/qtimdm.inf"
+#define QTI_MODEM_INF_PATH "/opt/QUIC/USB/serial/qtimdm.inf"
 
 fileInfo_t  *gQTIModemFileInfo = NULL;
 static char *gQTIModemInfFilePath = NULL;

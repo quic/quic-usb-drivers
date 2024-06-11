@@ -16,9 +16,9 @@ FILE:
 #include <linux/vmalloc.h>
 
 #define DRIVER_DESC "QTIDebugSubsystemUSB"
-#define QDSS_INF_PATH "/opt/QTI/QUD/diag/qdbusb.inf"
-#define DIAG_INF_PATH "/opt/QTI/QUD/diag/qtiser.inf"
-#define MODEM_INF_PATH "/opt/QTI/QUD/diag/qtimdm.inf"
+#define QDSS_INF_PATH "/opt/QUIC/USB/diag/qdbusb.inf"
+#define DIAG_INF_PATH "/opt/QUIC/USB/diag/qtiser.inf"
+#define MODEM_INF_PATH "/opt/QUIC/USB/diag/qtimdm.inf"
 
 fileInfo_t  *gQdssFileInfo;
 static char *gQdssInfFilePath = NULL;
