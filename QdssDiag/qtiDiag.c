@@ -3836,10 +3836,11 @@ static int QTIDevUSBModInit(void)
     }
 #endif
 
-#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6,3,13))
-    gpDiagClass = class_create(THIS_MODULE, QTIDEV_PORT_CLASS_NAME);
-#else
+#if (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 3)) || \
+    (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
     gpDiagClass = class_create(QTIDEV_PORT_CLASS_NAME);
+#else
+    gpDiagClass = class_create(THIS_MODULE, QTIDEV_PORT_CLASS_NAME);
 #endif
     if (IS_ERR(gpDiagClass) == true)
     {
@@ -3851,10 +3852,11 @@ static int QTIDevUSBModInit(void)
         return -ENOMEM;
     }
 
-#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6,3,13))
-    gpQdssClass = class_create(THIS_MODULE, QTIDEV_USB_CLASS_NAME);
-#else
+#if (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 3)) || \
+    (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
     gpQdssClass = class_create(QTIDEV_USB_CLASS_NAME);
+#else
+    gpQdssClass = class_create(THIS_MODULE, QTIDEV_USB_CLASS_NAME);
 #endif
     if (IS_ERR(gpQdssClass) == true)
     {

@@ -35,6 +35,7 @@ FUNCTIONS:
 #include "QMIDevice.h"
 #include "QMI.h"
 #include "qmap.h"
+#include "../version.h"
 #include <linux/device.h>
 #include <linux/if_arp.h>
 #include <linux/platform_device.h>
@@ -3215,10 +3216,11 @@ static int GobiUSBNetModInit(void)
    }
 #endif
 
-#if (LINUX_VERSION_CODE <= KERNEL_VERSION(6,3,13))
-   gpClass = class_create( THIS_MODULE, "GobiQMI" );
-#else
+#if (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(9, 3)) || \
+    (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
    gpClass = class_create("GobiQMI" );
+#else
+   gpClass = class_create( THIS_MODULE, "GobiQMI" );
 #endif
    if (IS_ERR( gpClass ) == true)
    {
